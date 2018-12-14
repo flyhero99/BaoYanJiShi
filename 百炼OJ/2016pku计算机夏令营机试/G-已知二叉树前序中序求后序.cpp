@@ -15,7 +15,8 @@ struct TreeNode {
     TreeNode *left, *right;
 };
 
-TreeNode* buildTree(string pre, string in) {
+// 给定前序中序求后序
+TreeNode* buildPreIn(string pre, string in) {
     TreeNode *root = NULL;
     if(pre.length() > 0) {
         root = new TreeNode;
@@ -23,6 +24,19 @@ TreeNode* buildTree(string pre, string in) {
         int index = in.find(pre[0]);
         root -> left = buildTree(pre.substr(1, index), in.substr(0, index));
         root -> right = buildTree(pre.substr(index+1), in.substr(index+1));
+    }
+    return root;
+}
+
+// 给定中序后序求前序
+TreeNode* buildInPost(string in, string post) {
+    TreeNode *root = NULL;
+    if(post.length() > 0) {
+        root = new TreeNode;
+        root -> data = post.back();
+        int index = in.find(post.back());
+        root -> left = buildInPost(in.substr(0, index), post.substr(0, index));
+        root -> right = buildInPost(in.substr(index+1), post.substr(index, post.length()-index-1));
     }
     return root;
 }
@@ -54,7 +68,7 @@ void postTraverse(TreeNode *root) {
 int main() {
     string pre, in;
     while(cin >> pre >> in) {
-        TreeNode *root = buildTree(pre, in);
+        TreeNode *root = buildPreIn(pre, in);
         // cout << "前序: "; preTraverse(root); cout << endl;
         // cout << "中序: "; inTraverse(root); cout << endl;
         // cout << "后序: "; postTraverse(root); cout << endl;
