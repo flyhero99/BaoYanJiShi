@@ -22,6 +22,25 @@ const int inf = 0x3f3f3f3f;
 int n;
 int s[maxm], d[maxm], dp[maxm];
 
+void print(int x) {
+    int h, m, s;
+    h = x / 3600;
+    x = x % 3600;
+    m = x / 60;
+    x = x % 60;
+    s = x;
+    h += 8;
+    // cout << h << ' ' << m << ' ' << s << endl;
+    if(0 <= h && h <= 9) cout << "0" << h << ":";
+    else cout << h << ":";
+    if(0 <= m && m <= 9) cout << "0" << m << ":";
+    else cout << m << ":";
+    if(0 <= s && s <= 9) cout << "0" << s << " ";
+    else cout << s << " ";
+    if(0 <= h && h <= 11) cout << "am" << endl;
+    else cout << "pm" << endl;
+}
+
 int main() {
     int t; cin >> t;
     while(t--) {
@@ -34,6 +53,7 @@ int main() {
             dp[i] = min(dp[i-1]+s[i], dp[i-2]+d[i-1]);
         }
         // dp[n] = min(dp[n-1]+s[n], dp[n-2]+d[n-1]);
-        cout << dp[n] << endl;
+        print(dp[n]);
     }
+    return 0;
 }
