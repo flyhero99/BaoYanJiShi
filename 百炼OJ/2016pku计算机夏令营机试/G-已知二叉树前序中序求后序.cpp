@@ -22,8 +22,8 @@ TreeNode* buildPreIn(string pre, string in) {
         root = new TreeNode;
         root -> data = pre[0];
         int index = in.find(pre[0]);
-        root -> left = buildTree(pre.substr(1, index), in.substr(0, index));
-        root -> right = buildTree(pre.substr(index+1), in.substr(index+1));
+        root -> left = buildPreIn(pre.substr(1, index), in.substr(0, index));
+        root -> right = buildPreIn(pre.substr(index+1), in.substr(index+1));
     }
     return root;
 }
