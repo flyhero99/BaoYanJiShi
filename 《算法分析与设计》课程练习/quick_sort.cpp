@@ -20,6 +20,8 @@ const int inf = 0x3f3f3f3f;
 const int maxn = 505; // maximum kinds of items
 const int maxm = 100005; // maximum capacity of the pack
 
+int n;
+
 void quick_sort(int *a, int left, int right) {
     // cout << "left: " << left << " right: " << right << endl;
     if(left > right) return;
@@ -32,6 +34,8 @@ void quick_sort(int *a, int left, int right) {
     // i is already equal to j
     a[left] = a[i];
     a[i] = pivot;
+    // cout << "After sorting: ";
+    // for(int i = 1; i <= n; i++) cout << a[i] << ' '; cout << endl;
     quick_sort(a, left, i-1);
     quick_sort(a, i+1, right);
 }
@@ -42,7 +46,6 @@ void quick_sort(int *a, int left, int right) {
 */
 
 int main() {
-    int n;
     while(~scanf("%d", &n) && n) {
         int a[n];
         for(int i = 1; i <= n; i++) scanf("%d", &a[i]);
