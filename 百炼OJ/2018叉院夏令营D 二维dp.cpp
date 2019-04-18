@@ -19,6 +19,7 @@ typedef pair<double, double> pdd;
 const int inf = 0x3f3f3f3f;
 const int maxn = 505; // maximum value of n
 
+// POJ 1094
 
 int n, m;
 int dp[100][100];
