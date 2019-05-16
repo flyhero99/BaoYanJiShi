@@ -37,7 +37,7 @@ int LISn2() {
 // dp[i]表示长度为i的LIS的最后一位数，初始化为inf，越后面的元素dp[i]应该越小
 // 如果当前元素比LIS最后一位大，直接延长；否则二分查找到此时a[i]应该更新到的元素
 int LISnlogn() {
-	memset(dp, inf, sizeof dp);
+	memset(dp, -1, sizeof dp);
 	int cnt = 1;
 	dp[1] = a[1];
 	for(int i = 2; i <= n; i++) {
@@ -46,7 +46,7 @@ int LISnlogn() {
 			int l = 0, r = cnt;
 			while(l < r) {
 				int mid = (l+r) >> 1;
-				if(a[i] > dp[mid]) // 大的元素放到前一半更新
+				if(a[i] <= dp[mid]) // 小的元素放到前一半更新
 					r = mid;
 				else l = mid+1;
 			}
