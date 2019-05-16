@@ -46,7 +46,7 @@ int LISnlogn() {
 			int l = 0, r = cnt;
 			while(l < r) {
 				int mid = (l+r) >> 1;
-				if(a[i] <= dp[mid]) // 小的元素放到前一半更新
+				if(dp[mid] > a[i])
 					r = mid;
 				else l = mid+1;
 			}
