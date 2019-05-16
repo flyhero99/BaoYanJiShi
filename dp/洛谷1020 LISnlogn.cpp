@@ -26,7 +26,7 @@ int main() {
 	while(scanf("%lld", &a[++n]) == 1);
 	n--;
 	// cin >> n; for(int i = 1; i <= n; i++) scanf("%lld", &a[i]);
-	ll m = 1; memset(dp, 127, sizeof dp); dp[1] = a[1];
+	ll m = 1; memset(dp, inf, sizeof dp); dp[1] = a[1];
 	for(int i = 2; i <= n; i++) {
 		if(dp[m] >= a[i]) dp[++m] = a[i];
 		else {
