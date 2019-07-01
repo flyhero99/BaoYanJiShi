@@ -17,6 +17,9 @@ typedef pair<int, int> pii;
 const int maxn = 105;
 const int inf = 0x3f3f3f3f;
 
+// 题目链接：http://bailian.openjudge.cn/xly2017/B/
+// 提交链接：http://sdsy.openjudge.cn/21/39/
+
 bool pd(int x) {
 	if(x == 1) return false;
 	if(x == 2 || x == 3) return true;
